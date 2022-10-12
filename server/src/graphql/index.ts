@@ -1,16 +1,19 @@
-import { createServer } from "graphql-yoga";
-import { schema } from "../schema";
-import { createContext } from "../context";
-import { useGenericAuth } from "@envelop/generic-auth";
-import { resolveUser } from "../auth/resolveUser";
+import { createServer, useLogger } from 'graphql-yoga'
+import { schema } from '../schema'
+import { createContext } from '../context'
+import { useGenericAuth } from '@envelop/generic-auth'
+import { resolveUser } from '../auth/resolveUser'
 
 export const server = createServer({
   schema,
   context: createContext,
   plugins: [
+    // useLogger({
+    //   logFn: ()
+    // }),
     useGenericAuth({
       resolveUserFn: resolveUser,
-      mode: "protect-all",
+      mode: 'protect-all',
     }),
   ],
-});
+})

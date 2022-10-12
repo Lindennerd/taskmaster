@@ -22,6 +22,7 @@ export function LoginForm() {
     LOGIN_MUTATION,
     {
       onError(error) {
+        console.error(error);
         toast.error("Login Failed");
       },
     }
@@ -29,10 +30,10 @@ export function LoginForm() {
 
   function onSubmit(e: { preventDefault: () => void }) {
     e.preventDefault();
+
     loginFunction({
       variables: {
-        email: loginForm?.email,
-        password: loginForm?.password,
+        input: loginForm,
       },
     });
   }
@@ -46,7 +47,9 @@ export function LoginForm() {
             type="email"
             id="email"
             value={loginForm?.email ?? ""}
-            onChange={(e) => setLoginForm({ email: e.target.value })}
+            onChange={(e) =>
+              setLoginForm((form) => ({ ...form, email: e.target.value }))
+            }
           />
         </div>
         <div className="form-control">
@@ -55,7 +58,9 @@ export function LoginForm() {
             type="password"
             id="password"
             value={loginForm?.password ?? ""}
-            onChange={(e) => setLoginForm({ password: e.target.value })}
+            onChange={(e) =>
+              setLoginForm((form) => ({ ...form, password: e.target.value }))
+            }
           />
         </div>
         <div className="form-control ">
