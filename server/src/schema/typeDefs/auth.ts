@@ -1,15 +1,17 @@
 export const auth = /* GraphQL */ `
-directive @skipAuth on FIELD_DEFINITION
+  directive @skipAuth on FIELD_DEFINITION
 
-input LoginType {
+  input LoginType {
     email: String
     password: String
-}
+  }
 
-type AuthOutput {
-    token: String @skipAuth,
-}
+  type AuthOutput {
+    token: String @skipAuth
+  }
 
-type Mutation {
+  type Mutation {
     login(input: LoginType!): UserOutput @skipAuth
-}`;
+    logout: Boolean
+  }
+`

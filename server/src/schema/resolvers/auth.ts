@@ -1,7 +1,7 @@
-import { GraphQLContext } from "../../context";
-import { crypt } from "../../lib/crypt";
-import { jwt } from "../../lib/jwt";
-import { LoginArgs, LoginOutput } from "../types";
+import { GraphQLContext } from '../../context'
+import { crypt } from '../../lib/crypt'
+import { jwt } from '../../lib/jwt'
+import { LoginArgs, LoginOutput } from '../types'
 
 export const auth = {
   Mutation: {
@@ -14,18 +14,23 @@ export const auth = {
         where: {
           email: args.input.email,
         },
-      });
+      })
 
       if (user && crypt.compare(args.input.password, user.password)) {
-        const { password, ...userOutput } = user;
-        const token = jwt.sign(userOutput);
+        const { password, ...userOutput } = user
+        const token = jwt.sign(userOutput)
 
-        context.res?.cookie("authorization", token);
+        context.res?.cookie('authorization', token)
 
-        return userOutput;
+        return userOutput
       } else {
-        return null;
+        return null
       }
     },
+
+    logout: async (_parent: any, _args: any, context: GraphQLContext) => {
+      context.res?.clearCookie('authorization')
+      return true
+    },
   },
-};
+}

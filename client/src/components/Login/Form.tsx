@@ -5,6 +5,7 @@ import { Card } from "../UI/Card";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/AuthContext";
+import { useNavigate, useRoutes } from "react-router-dom";
 
 const LOGIN_MUTATION = gql`
   mutation Login($input: LoginType!) {
@@ -19,6 +20,8 @@ const LOGIN_MUTATION = gql`
 
 export function LoginForm() {
   const { setUser } = useAuth();
+  const navigate = useNavigate();
+
   const [loginForm, setLoginForm] = useState<LoginType>();
   const [loginFunction, { data, loading }] = useMutation<{ login: UserOutput }>(
     LOGIN_MUTATION,
@@ -30,6 +33,7 @@ export function LoginForm() {
 
       onCompleted(data, clientOptions) {
         setUser(data.login);
+        navigate("/");
       },
     }
   );

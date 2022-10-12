@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
-import { UnauthenticatedNavbar } from "../components/Navbar/Unauthenticated";
 import { Footer } from "../components/UI/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTheme } from "../context/ThemeContext";
+import { Navbar } from "../components/Navbar";
 
 export default function Root() {
   const { theme } = useTheme();
@@ -14,7 +14,7 @@ export default function Root() {
      bg-gray-100 w-full min-h-screen relative"
     >
       <ToastContainer theme={theme ? "light" : "dark"} />
-      <UnauthenticatedNavbar />
+      <Navbar />
       <div className="px-2 pt-14 pb-12 w-full">
         <Outlet />
       </div>

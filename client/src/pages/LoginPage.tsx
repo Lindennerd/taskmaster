@@ -7,7 +7,6 @@ export function LoginPage() {
   return (
     <div className="flex flex-col justify-center items-center justify-items-center">
       <LoginForm />
-      {user?.name}
     </div>
   );
 }
