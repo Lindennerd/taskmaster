@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev:server": "yarn workspace server run dev",
-    "dev:client": "yarn workspace server run dev",
+    "dev:client": "yarn workspace client run dev",
     "build": "yarn workspace server run build & yarn workspace client run build"
   },
   "license": "MIT"
