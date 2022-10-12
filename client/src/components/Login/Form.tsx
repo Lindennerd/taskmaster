@@ -1,9 +1,10 @@
 import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
-import { LoginType, UserOutput } from "../../gql/graphql";
+import { LoginType, User, UserOutput } from "../../gql/graphql";
 import { Card } from "../UI/Card";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useAuth } from "../../context/AuthContext";
 
 const LOGIN_MUTATION = gql`
   mutation Login($input: LoginType!) {
@@ -17,13 +18,18 @@ const LOGIN_MUTATION = gql`
 `;
 
 export function LoginForm() {
+  const { setUser } = useAuth();
   const [loginForm, setLoginForm] = useState<LoginType>();
-  const [loginFunction, { data, loading }] = useMutation<UserOutput>(
+  const [loginFunction, { data, loading }] = useMutation<{ login: UserOutput }>(
     LOGIN_MUTATION,
     {
       onError(error) {
         console.error(error);
         toast.error("Login Failed");
+      },
+
+      onCompleted(data, clientOptions) {
+        setUser(data.login);
       },
     }
   );

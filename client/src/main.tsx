@@ -5,6 +5,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { router } from "./Routes";
 import { ThemeContextProvider } from "./context/ThemeContext";
+import { AuthContextProvider } from "./context/AuthContext";
 
 const apolloClient = new ApolloClient({
   // TODO! FIX FETCHING ENV
@@ -15,10 +16,12 @@ const apolloClient = new ApolloClient({
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ApolloProvider client={apolloClient}>
-      <ThemeContextProvider>
-        <RouterProvider router={router} />
-      </ThemeContextProvider>
-    </ApolloProvider>
+    <AuthContextProvider>
+      <ApolloProvider client={apolloClient}>
+        <ThemeContextProvider>
+          <RouterProvider router={router} />
+        </ThemeContextProvider>
+      </ApolloProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
