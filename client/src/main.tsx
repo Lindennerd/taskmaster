@@ -4,6 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { router } from "./Routes";
+import { ThemeContextProvider } from "./context/ThemeContext";
 
 const apolloClient = new ApolloClient({
   uri: import.meta.env.GRAPHQL_SERVER,
@@ -13,7 +14,9 @@ const apolloClient = new ApolloClient({
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ApolloProvider client={apolloClient}>
-      <RouterProvider router={router} />
+      <ThemeContextProvider>
+        <RouterProvider router={router} />
+      </ThemeContextProvider>
     </ApolloProvider>
   </React.StrictMode>
 );

@@ -4,12 +4,12 @@ import { Footer } from "../components/UI/Footer";
 
 export default function Root() {
   return (
-    <>
+    <div className="dark:bg-gray-700 dark:text-white transition-colors">
       <UnauthenticatedNavbar />
-      <div className="mt-12 w-screen h-screen p-2">
+      <div className="w-screen h-screen px-2 py-14">
         <Outlet />
       </div>
       <Footer />
-    </>
+    </div>
   );
 }

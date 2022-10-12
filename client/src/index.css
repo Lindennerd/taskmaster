@@ -3,7 +3,5 @@
 @tailwind utilities;
 
 @layer components {
-    button {
-        @apply py-1 px-2 rounded-md hover:bg-slate-200 transition-colors
-    }
+    
 }
