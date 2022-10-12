@@ -7,7 +7,9 @@ import { router } from "./Routes";
 import { ThemeContextProvider } from "./context/ThemeContext";
 
 const apolloClient = new ApolloClient({
-  uri: import.meta.env.GRAPHQL_SERVER,
+  // TODO! FIX FETCHING ENV
+  // uri: import.meta.env.GRAPHQL_SERVER,
+  uri: "http://localhost:3000/graphql",
   cache: new InMemoryCache(),
 });
 
