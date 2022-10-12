@@ -3,5 +3,15 @@
 @tailwind utilities;
 
 @layer components {
-    
+    .form-control {
+        @apply flex flex-col p-2
+    }
+
+    .form-control input {
+        @apply px-4 py-1 outline-none dark:bg-slate-800 bg-gray-100 rounded
+    }
+
+    .form-control button {
+        @apply w-full hover:dark:bg-slate-800 hover:bg-gray-100 rounded p-2 transition-all
+    }
 }
