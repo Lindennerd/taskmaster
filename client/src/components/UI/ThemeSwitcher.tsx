@@ -6,7 +6,7 @@ export function ThemeSwitcher() {
 
   return (
     <button
-      className="dark:hover:bg-slate-700 hover:bg-slate-100 p-1 rounded-full"
+      className="dark:hover:bg-secondary_dark hover:bg-secondary_light p-1 rounded-full"
       onClick={(e) => setTheme(!theme)}
     >
       {theme ? (

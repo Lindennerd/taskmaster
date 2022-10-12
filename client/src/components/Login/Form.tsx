@@ -3,7 +3,7 @@ import gql from "graphql-tag";
 import { LoginType, UserOutput } from "../../gql/graphql";
 import { Card } from "../UI/Card";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const LOGIN_MUTATION = gql`
   mutation Login($input: LoginType!) {
@@ -58,7 +58,7 @@ export function LoginForm() {
             onChange={(e) => setLoginForm({ password: e.target.value })}
           />
         </div>
-        <div className="form-control">
+        <div className="form-control ">
           <button disabled={loading}>
             {loading ? "Loging you in..." : "Login"}
           </button>

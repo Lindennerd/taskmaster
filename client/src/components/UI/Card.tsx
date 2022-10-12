@@ -5,8 +5,8 @@ interface CardProps {
 
 export function Card({ title, children }: CardProps) {
   return (
-    <div className="rounded dark:bg-gray-900 bg-white shadow-md">
-      <div className="p-2 text-center border-b dark:border-b-gray-800">
+    <div className="rounded-md dark:bg-neutral-700 bg-white shadow-md">
+      <div className="p-2 rounded-t-md text-center text-white bg-primary_light dark:bg-primary_dark">
         {title}
       </div>
       {children}
