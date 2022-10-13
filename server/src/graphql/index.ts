@@ -8,9 +8,6 @@ export const server = createServer({
   schema,
   context: createContext,
   plugins: [
-    // useLogger({
-    //   logFn: ()
-    // }),
     useGenericAuth({
       resolveUserFn: resolveUser,
       mode: 'protect-all',

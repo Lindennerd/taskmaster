@@ -32,8 +32,12 @@ export function LoginForm() {
       },
 
       onCompleted(data, clientOptions) {
-        setUser(data.login);
-        navigate("/");
+        if (!data.login) {
+          toast.warn("Credenciais Inválidas");
+        } else {
+          setUser(data.login);
+          navigate("/");
+        }
       },
     }
   );
@@ -49,36 +53,38 @@ export function LoginForm() {
   }
 
   return (
-    <Card title="Log In">
-      <form onSubmit={(e) => onSubmit(e)} className="p-2 flex flex-col gap-2">
-        <div className="form-control">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={loginForm?.email ?? ""}
-            onChange={(e) =>
-              setLoginForm((form) => ({ ...form, email: e.target.value }))
-            }
-          />
-        </div>
-        <div className="form-control">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={loginForm?.password ?? ""}
-            onChange={(e) =>
-              setLoginForm((form) => ({ ...form, password: e.target.value }))
-            }
-          />
-        </div>
-        <div className="form-control ">
-          <button disabled={loading}>
-            {loading ? "Loging you in..." : "Login"}
-          </button>
-        </div>
-      </form>
-    </Card>
+    <div className="mt-[10%]">
+      <Card title="Log In">
+        <form onSubmit={(e) => onSubmit(e)} className="p-2 flex flex-col gap-2">
+          <div className="form-control">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={loginForm?.email ?? ""}
+              onChange={(e) =>
+                setLoginForm((form) => ({ ...form, email: e.target.value }))
+              }
+            />
+          </div>
+          <div className="form-control">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={loginForm?.password ?? ""}
+              onChange={(e) =>
+                setLoginForm((form) => ({ ...form, password: e.target.value }))
+              }
+            />
+          </div>
+          <div className="form-control ">
+            <button disabled={loading}>
+              {loading ? "Loging you in..." : "Login"}
+            </button>
+          </div>
+        </form>
+      </Card>
+    </div>
   );
 }
