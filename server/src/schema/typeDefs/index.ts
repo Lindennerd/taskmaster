@@ -1,10 +1,11 @@
-import { comments } from "./comments.gql";
-import { hello } from "./hello.gql";
-import { typeDefs as scalarTypeDefs } from "graphql-scalars";
-import { task } from "./task.gql";
-import { ticket } from "./ticket.gql";
-import { users } from "./users.gql";
-import { auth } from "./auth";
+import { comments } from './comments.gql'
+import { hello } from './hello.gql'
+import { typeDefs as scalarTypeDefs } from 'graphql-scalars'
+import { task } from './task.gql'
+import { ticket } from './ticket.gql'
+import { users } from './users.gql'
+import { auth } from './auth'
+import { team } from './team'
 
 export const typeDefs = [
   ...scalarTypeDefs,
@@ -14,4 +15,5 @@ export const typeDefs = [
   ticket,
   users,
   auth,
-];
+  team,
+]
