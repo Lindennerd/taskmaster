@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { json, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { ThemeSwitcher } from "../UI/ThemeSwitcher";
 import { AuthenticatedNavbar } from "./Authenticated";

@@ -12,6 +12,7 @@ const apolloClient = new ApolloClient({
   // uri: import.meta.env.GRAPHQL_SERVER,
   uri: "http://localhost:3000/graphql",
   cache: new InMemoryCache(),
+  credentials: "include",
 });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

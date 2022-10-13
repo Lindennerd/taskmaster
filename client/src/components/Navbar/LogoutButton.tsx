@@ -1,3 +1,29 @@
+import { gql, useMutation } from "@apollo/client";
+import { useAuth } from "../../context/AuthContext";
+
+const LOGOUT_MUTATION = gql`
+  mutation Logout {
+    logout
+  }
+`;
+
 export function LogoutButton() {
-  return <button>Logout</button>;
+  const [logoutFn, { loading }] = useMutation(LOGOUT_MUTATION, {
+    onError(error, clientOptions) {
+      console.log(error);
+    },
+    onCompleted(data) {
+      console.log("completed");
+    },
+  });
+  const { setUser } = useAuth();
+
+  function logout() {
+    console.log("clicked");
+
+    logoutFn();
+    setUser(undefined);
+  }
+
+  return <button onClick={(e) => logout()}>Logout</button>;
 }

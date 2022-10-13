@@ -14,14 +14,20 @@ export function AuthenticatedNavbar() {
     <div className="flex gap-4 items-center box-border">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className="hover:bg-secondary_light dark:hover:bg-secondary_dark p-1 rounded-full">
+          <button
+            className="hover:bg-secondary_light dark:hover:bg-secondary_dark p-1 
+          rounded-full outline-none"
+          >
             <UserBusiness className="text-xl" />
           </button>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent>
+        <DropdownMenuContent
+          className="rounded-md bg-secondary_light dark:bg-secondary_dark 
+        shadow-md p-2"
+        >
           <DropdownMenuItem>
-            Theme <ThemeSwitcher />
+            <ThemeSwitcher displayThemeName={true} />
           </DropdownMenuItem>
           <DropdownMenuItem>
             <LogoutButton />

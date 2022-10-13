@@ -22,10 +22,17 @@ export function AuthContextProvider({ children }: { children: ReactElement }) {
     else return JSON.parse(localStorage.userInfo) as UserOutput;
   });
 
-  const [isAuthenticated] = useState(user !== null && user !== undefined);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    user !== null && user !== undefined
+  );
 
   useEffect(() => {
-    localStorage.setItem("userInfo", JSON.stringify(user));
+    if (!user) localStorage.removeItem("userInfo");
+    else localStorage.setItem("userInfo", JSON.stringify(user));
+  }, [user]);
+
+  useEffect(() => {
+    setIsAuthenticated(!!user);
   }, [user]);
 
   return (
