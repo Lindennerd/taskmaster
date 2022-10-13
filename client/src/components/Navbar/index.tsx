@@ -9,7 +9,7 @@ export function Navbar() {
   const { isAuthenticated, user } = useAuth();
 
   return (
-    <div className="fixed top-0 w-full flex justify-between items-center p-2 shadow-sm text-white bg-primary_light dark:bg-primary_dark z-10">
+    <div className="fixed h-12 top-0 w-full flex justify-between items-center p-2 shadow-sm text-white bg-primary_light dark:bg-primary_dark z-10">
       <div>
         <Link to="/" className="hover:border-b-2 transition-all">
           Task Master

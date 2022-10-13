@@ -12,9 +12,6 @@ export function LogoutButton() {
     onError(error, clientOptions) {
       console.log(error);
     },
-    onCompleted(data) {
-      console.log("completed");
-    },
   });
   const { setUser } = useAuth();
 

@@ -8,32 +8,14 @@ import {
 import { Link } from "react-router-dom";
 import { ThemeSwitcher } from "../UI/ThemeSwitcher";
 import { LogoutButton } from "./LogoutButton";
+import { SearchBar } from "./SearchBar";
+import { UserDropdownMenu } from "./UserDropdownMenu";
 
 export function AuthenticatedNavbar() {
   return (
     <div className="flex gap-4 items-center box-border">
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <button
-            className="hover:bg-secondary_light dark:hover:bg-secondary_dark p-1 
-          rounded-full outline-none"
-          >
-            <UserBusiness className="text-xl" />
-          </button>
-        </DropdownMenuTrigger>
-
-        <DropdownMenuContent
-          className="rounded-md bg-secondary_light dark:bg-secondary_dark 
-        shadow-md p-2"
-        >
-          <DropdownMenuItem>
-            <ThemeSwitcher displayThemeName={true} />
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <LogoutButton />
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <SearchBar />
+      <UserDropdownMenu />
     </div>
   );
 }
