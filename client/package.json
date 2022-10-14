@@ -25,6 +25,7 @@
     "react-router-dom": "^6.4.2",
     "react-spring": "^9.5.5",
     "react-toastify": "^9.0.8",
+    "react-tooltip": "^4.4.0",
     "sort-by": "^1.2.0"
   },
   "devDependencies": {

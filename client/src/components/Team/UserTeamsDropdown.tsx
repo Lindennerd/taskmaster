@@ -1,7 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
-import { DropDownList } from "@icon-park/react";
+import { AddItem, AddOne, DropDownList, EveryUser } from "@icon-park/react";
 import * as Select from "@radix-ui/react-select";
 import Loading from "react-loading";
+import ReactTooltip from "react-tooltip";
 import { Team } from "../../gql/graphql";
 
 const USERTEAMS_QUERY = gql`
@@ -28,26 +29,25 @@ export function UserTeamsDropdown() {
 
   if (data)
     return (
-      <Select.Root>
-        <Select.Trigger>
-          <Select.Value placeholder="Select a Team" />
-          <Select.Icon>
-            <DropDownList />
-          </Select.Icon>
-        </Select.Trigger>
-
-        <Select.Portal>
-          <Select.Content>
-            <Select.Viewport>
-              {data &&
-                data.userTeams.map((team) => (
-                  <Select.Item value={team.id.toString()} key={team.id}>
-                    <Select.ItemText>{team.name}</Select.ItemText>
-                  </Select.Item>
-                ))}
-            </Select.Viewport>
-          </Select.Content>
-        </Select.Portal>
-      </Select.Root>
+      <div>
+        <div className="flex items-center gap-2 p-2 border-b">
+          <EveryUser className="text-2xl" />
+          <span>Your Teams</span>
+        </div>
+        <div>
+          {!data.userTeams.length && (
+            <div className="flex items-center gap-2 p-2">
+              <ReactTooltip />
+              <span> You have no teams yet</span>
+              <button>
+                <AddOne data-tip="Create a Team" className="text-xl" />
+              </button>
+            </div>
+          )}
+          {data.userTeams.map((team) => (
+            <div key={team.id}>{team.name}</div>
+          ))}
+        </div>
+      </div>
     );
 }
